@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+  <title id="title">Jev 在 Agent 系统中的位置</title>
+  <desc id="desc">输入状态经过状态整理后进入判断层，判断层按置信度分流到自动执行、强模型复核或人工复核。</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7fafc}
+      .panel{fill:#fff;stroke:#d8e1ec;stroke-width:2}
+      .box{fill:#eef5ff;stroke:#8fb6e8;stroke-width:2}
+      .judge{fill:#fff6df;stroke:#e5ae34;stroke-width:2}
+      .code{fill:#ecf8f1;stroke:#6dbb84;stroke-width:2}
+      .risk{fill:#fff0f0;stroke:#dd7b7b;stroke-width:2}
+      .title{font:700 24px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .h{font:700 18px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .t{font:15px Arial,"Microsoft YaHei",sans-serif;fill:#35465a}
+      .s{font:13px Arial,"Microsoft YaHei",sans-serif;fill:#65758a}
+      .arrow{stroke:#52677f;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#52677f"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1000" height="560" rx="18"/>
+  <text class="title" x="500" y="44" text-anchor="middle">Jev 不是生成层，而是 Agent 的判断层</text>
+
+  <rect class="panel" x="48" y="84" width="260" height="350" rx="14"/>
+  <text class="h" x="178" y="118" text-anchor="middle">输入状态 State</text>
+  <rect class="box" x="78" y="148" width="200" height="44" rx="8"/>
+  <text class="t" x="178" y="176" text-anchor="middle">用户目标</text>
+  <rect class="box" x="78" y="210" width="200" height="44" rx="8"/>
+  <text class="t" x="178" y="238" text-anchor="middle">工具调用结果</text>
+  <rect class="box" x="78" y="272" width="200" height="44" rx="8"/>
+  <text class="t" x="178" y="300" text-anchor="middle">测试日志 / 报错</text>
+  <rect class="box" x="78" y="334" width="200" height="44" rx="8"/>
+  <text class="t" x="178" y="362" text-anchor="middle">页面元素 / 业务字段</text>
+
+  <rect class="panel" x="370" y="84" width="260" height="350" rx="14"/>
+  <text class="h" x="500" y="118" text-anchor="middle">判断层 Jev-like</text>
+  <rect class="judge" x="400" y="148" width="200" height="54" rx="8"/>
+  <text class="t" x="500" y="171" text-anchor="middle">Choice：选哪个</text>
+  <text class="s" x="500" y="190" text-anchor="middle">工具路由 / 工单分流</text>
+  <rect class="judge" x="400" y="226" width="200" height="54" rx="8"/>
+  <text class="t" x="500" y="249" text-anchor="middle">Score：打几分</text>
+  <text class="s" x="500" y="268" text-anchor="middle">质量 / 风险 / 相关性</text>
+  <rect class="judge" x="400" y="304" width="200" height="54" rx="8"/>
+  <text class="t" x="500" y="327" text-anchor="middle">Noul：是不是</text>
+  <text class="s" x="500" y="346" text-anchor="middle">是否保留 / 是否危险</text>
+  <text class="s" x="500" y="398" text-anchor="middle">输出：概率分布 + 置信度 + 可写进代码的阈值</text>
+
+  <rect class="panel" x="692" y="84" width="260" height="350" rx="14"/>
+  <text class="h" x="822" y="118" text-anchor="middle">后续动作 Action</text>
+  <rect class="code" x="722" y="148" width="200" height="54" rx="8"/>
+  <text class="t" x="822" y="171" text-anchor="middle">高置信度</text>
+  <text class="s" x="822" y="190" text-anchor="middle">确定性代码自动执行</text>
+  <rect class="box" x="722" y="226" width="200" height="54" rx="8"/>
+  <text class="t" x="822" y="249" text-anchor="middle">中置信度</text>
+  <text class="s" x="822" y="268" text-anchor="middle">交给强模型复核</text>
+  <rect class="risk" x="722" y="304" width="200" height="54" rx="8"/>
+  <text class="t" x="822" y="327" text-anchor="middle">低置信度 / 高风险</text>
+  <text class="s" x="822" y="346" text-anchor="middle">转人工或保守拒绝</text>
+
+  <path class="arrow" d="M308 258 H366"/>
+  <path class="arrow" d="M630 258 H688"/>
+  <path class="arrow" d="M822 434 C822 500 178 500 178 438"/>
+  <text class="s" x="500" y="526" text-anchor="middle">闭环：执行结果重新进入状态，下一轮继续判断，而不是每次都让大模型生成一整段话</text>
+</svg>

@@ -1,0 +1,43 @@
+<!-- PC端菜单栏文字显示 -->
+<%
+    var menuMap = new Map();
+    menuMap.set("Index", "首页");
+    menuMap.set("Tags", "标签");
+    menuMap.set("Categories", "分类");
+    menuMap.set("Archives", "归档");
+    menuMap.set("Friends", "友链");
+    menuMap.set("About", "关于");
+    menuMap.set("Contact", "联系");
+
+    var musicList = site.data && site.data.musics ? site.data.musics : [];
+    var navMusic = musicList[0] || {};
+%>
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    <% Object.keys(theme.menu).forEach(function(key) { %>
+    <li class="hide-on-med-and-down">
+        <a href="<%- theme.menu[key].url %>" class="waves-effect waves-light">
+            <% if (theme.menu[key].icon && theme.menu[key].icon.length > 0) { %>
+            <i class="fa <%- theme.menu[key].icon %>"></i>
+            <% } %>
+            <span><%- (config.language === 'zh-CN' && menuMap.has(key)) ? menuMap.get(key) : key %></span>
+        </a>
+    </li>
+    <% }); %>
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="<%= __('search') %>"></i>
+        </a>
+    </li>
+    <% if (theme.music && theme.music.enable && navMusic.url) { %>
+    <li>
+        <a id="siteMusicToggle" href="<%- url_for('/music') %>" class="site-music-toggle waves-effect waves-light" title="播放音乐" aria-label="Play music" aria-pressed="false">
+            <i class="fa fa-play" aria-hidden="true"></i>
+            <span class="sr-only">Play music</span>
+        </a>
+    </li>
+    <% } %>
+</ul>
+
+<%- partial('_partial/mobile-nav') %>

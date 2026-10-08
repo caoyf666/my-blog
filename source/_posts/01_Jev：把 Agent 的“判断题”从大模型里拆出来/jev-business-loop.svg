@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+  <title id="title">判断型模型的业务闭环</title>
+  <desc id="desc">从业务样本到训练、校准、影子运行、阈值上线和监控回流的闭环。</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbfcfe}
+      .node{fill:#fff;stroke:#cfd9e6;stroke-width:2}
+      .hot{fill:#eaf7ff;stroke:#67a9d8;stroke-width:2}
+      .green{fill:#eef9ef;stroke:#78bd78;stroke-width:2}
+      .warn{fill:#fff7e7;stroke:#dfac4d;stroke-width:2}
+      .text{font:15px Arial,"Microsoft YaHei",sans-serif;fill:#30445b}
+      .h{font:700 18px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .title{font:700 24px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .small{font:13px Arial,"Microsoft YaHei",sans-serif;fill:#68798c}
+      .arrow{stroke:#52677f;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#52677f"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1000" height="520" rx="18"/>
+  <text class="title" x="500" y="44" text-anchor="middle">我会按业务闭环来落地 Jev-like 判断层</text>
+
+  <rect class="node" x="70" y="102" width="190" height="90" rx="14"/>
+  <text class="h" x="165" y="135" text-anchor="middle">1. 定义判断题</text>
+  <text class="small" x="165" y="162" text-anchor="middle">选项、口径、风险等级</text>
+
+  <rect class="hot" x="320" y="102" width="190" height="90" rx="14"/>
+  <text class="h" x="415" y="135" text-anchor="middle">2. 收集业务样本</text>
+  <text class="small" x="415" y="162" text-anchor="middle">工单、日志、工具结果</text>
+
+  <rect class="green" x="570" y="102" width="190" height="90" rx="14"/>
+  <text class="h" x="665" y="135" text-anchor="middle">3. 训练 / 微调</text>
+  <text class="small" x="665" y="162" text-anchor="middle">通用权重不等于业务准确</text>
+
+  <rect class="warn" x="320" y="260" width="190" height="90" rx="14"/>
+  <text class="h" x="415" y="293" text-anchor="middle">5. 影子运行</text>
+  <text class="small" x="415" y="320" text-anchor="middle">先记录，不干预线上</text>
+
+  <rect class="node" x="570" y="260" width="190" height="90" rx="14"/>
+  <text class="h" x="665" y="293" text-anchor="middle">4. 概率校准</text>
+  <text class="small" x="665" y="320" text-anchor="middle">统计每个概率段真实正确率</text>
+
+  <rect class="green" x="70" y="260" width="190" height="90" rx="14"/>
+  <text class="h" x="165" y="293" text-anchor="middle">6. 阈值上线</text>
+  <text class="small" x="165" y="320" text-anchor="middle">自动 / 复核 / 人工兜底</text>
+
+  <rect class="hot" x="810" y="181" width="130" height="90" rx="14"/>
+  <text class="h" x="875" y="213" text-anchor="middle">监控回流</text>
+  <text class="small" x="875" y="240" text-anchor="middle">误判样本入库</text>
+
+  <path class="arrow" d="M260 147 H316"/>
+  <path class="arrow" d="M510 147 H566"/>
+  <path class="arrow" d="M665 192 V256"/>
+  <path class="arrow" d="M570 305 H514"/>
+  <path class="arrow" d="M320 305 H264"/>
+  <path class="arrow" d="M260 305 C285 414 812 414 875 275"/>
+  <path class="arrow" d="M875 181 C836 70 215 58 165 98"/>
+
+  <text class="text" x="500" y="444" text-anchor="middle">核心原则：不要问“模型准不准”，而要问“在我的业务阈值下，哪类动作可以自动化”。</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" aria-labelledby="title desc">
+  <title id="title">Jev-like 判断层的风险分流矩阵</title>
+  <desc id="desc">按风险等级和置信度决定自动执行、强模型复核或人工复核。</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}
+      .grid{fill:#fff;stroke:#cfd9e6;stroke-width:2}
+      .head{fill:#edf4fb}
+      .auto{fill:#eaf8ef}
+      .review{fill:#fff6dd}
+      .human{fill:#fff0f0}
+      .title{font:700 24px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .h{font:700 16px Arial,"Microsoft YaHei",sans-serif;fill:#25364a}
+      .t{font:14px Arial,"Microsoft YaHei",sans-serif;fill:#35465a}
+      .small{font:12px Arial,"Microsoft YaHei",sans-serif;fill:#68798c}
+    </style>
+  </defs>
+  <rect class="bg" width="1000" height="440" rx="18"/>
+  <text class="title" x="500" y="44" text-anchor="middle">我的分流原则：概率只负责分流，责任仍在业务代码</text>
+
+  <rect class="grid head" x="80" y="90" width="210" height="58"/>
+  <rect class="grid head" x="290" y="90" width="210" height="58"/>
+  <rect class="grid head" x="500" y="90" width="210" height="58"/>
+  <rect class="grid head" x="710" y="90" width="210" height="58"/>
+  <text class="h" x="185" y="125" text-anchor="middle">动作风险</text>
+  <text class="h" x="395" y="125" text-anchor="middle">高置信度</text>
+  <text class="h" x="605" y="125" text-anchor="middle">中置信度</text>
+  <text class="h" x="815" y="125" text-anchor="middle">低置信度</text>
+
+  <rect class="grid head" x="80" y="148" width="210" height="78"/>
+  <text class="h" x="185" y="180" text-anchor="middle">L1 只读动作</text>
+  <text class="small" x="185" y="204" text-anchor="middle">搜索、分类、排序</text>
+  <rect class="grid auto" x="290" y="148" width="210" height="78"/>
+  <text class="t" x="395" y="192" text-anchor="middle">自动执行</text>
+  <rect class="grid auto" x="500" y="148" width="210" height="78"/>
+  <text class="t" x="605" y="192" text-anchor="middle">自动执行并记录</text>
+  <rect class="grid review" x="710" y="148" width="210" height="78"/>
+  <text class="t" x="815" y="192" text-anchor="middle">强模型复核</text>
+
+  <rect class="grid head" x="80" y="226" width="210" height="78"/>
+  <text class="h" x="185" y="258" text-anchor="middle">L2 可逆动作</text>
+  <text class="small" x="185" y="282" text-anchor="middle">上下文压缩、草稿创建</text>
+  <rect class="grid auto" x="290" y="226" width="210" height="78"/>
+  <text class="t" x="395" y="270" text-anchor="middle">自动执行</text>
+  <rect class="grid review" x="500" y="226" width="210" height="78"/>
+  <text class="t" x="605" y="270" text-anchor="middle">强模型复核</text>
+  <rect class="grid human" x="710" y="226" width="210" height="78"/>
+  <text class="t" x="815" y="270" text-anchor="middle">保守拒绝 / 人工</text>
+
+  <rect class="grid head" x="80" y="304" width="210" height="78"/>
+  <text class="h" x="185" y="336" text-anchor="middle">L3 不可逆动作</text>
+  <text class="small" x="185" y="360" text-anchor="middle">扣款、删除、权限变更</text>
+  <rect class="grid review" x="290" y="304" width="210" height="78"/>
+  <text class="t" x="395" y="348" text-anchor="middle">强模型 + 规则双检</text>
+  <rect class="grid human" x="500" y="304" width="210" height="78"/>
+  <text class="t" x="605" y="348" text-anchor="middle">人工复核</text>
+  <rect class="grid human" x="710" y="304" width="210" height="78"/>
+  <text class="t" x="815" y="348" text-anchor="middle">禁止自动执行</text>
+</svg>

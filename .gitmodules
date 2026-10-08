@@ -1,0 +1,4 @@
+[submodule "source/_posts"]
+	path = source/_posts
+	url = ssh://git@ssh.github.com:443/caoyf666/blog-posts.git
+	branch = main

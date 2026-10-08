@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="<%= config.language %>">
+<%- partial('_partial/head') %>
+
+<body>
+
+    <%- partial('_partial/header') %>
+    <%- body %>
+    <%- partial('_partial/footer') %>
+    <% if (theme.music && theme.music.enable && site.data && site.data.musics && site.data.musics.length) { %>
+    <%- partial('_widget/music') %>
+    <% } %>
+
+    <%- partial('_partial/search') %>
+    <%- partial('_partial/back-top') %>
+
+    <script src="<%- theme.libs.js.materialize %>" defer></script>
+    <script src="<%- theme.libs.js.masonry %>" defer></script>
+    <script src="<%- theme.libs.js.aos %>" defer></script>
+    <script src="<%- theme.libs.js.scrollProgress %>" defer></script>
+    <script src="<%- theme.libs.js.lightgallery %>" defer></script>
+    
+    <script src="/js/matery.js" defer></script>
+    <script src="/js/click_show_text.js" defer></script>
+    
+    <!-- 根据是否在当前页面设置页面标题 -->
+    <!-- <script type="text/javascript"> 
+        var OriginTitile = document.title, st;
+        document.addEventListener("visibilitychange", function () {
+            document.hidden ? (document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！", clearTimeout(st)) : (document.title = "φ(゜▽゜*)♪咦，又好了！", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) 
+        })
+    </script> -->
+    
+    <!-- 动态线条背景 -->
+    <!-- <script type="text/javascript" color="56,152,252" opacity="0.9" zindex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+    </script>
+    <canvas id="c_n4" width="602" height="852" style="position: fixed; top: 0px; left: 0px; z-index: -2; opacity: 0.9;"></canvas> -->
+    
+    
+    <%- partial('_partial/google-analytics') %>
+
+    <% if (theme.clicklove.enable) { %>
+    <script src="<%- theme.libs.js.clicklove %>"></script>
+    <% } else if (theme.explosion.enable) { %>
+    <script src="<%- theme.libs.js.explosion %>"></script>    
+    <% } else if (theme.firework.enable) { %>
+    <script src="<%- theme.libs.js.firework %>"></script>    
+    <% } else if (theme.text.enable) { %>
+    <script src="<%- theme.libs.js.text %>"></script>    
+    <% } %>
+
+    <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+    <!-- 不蒜子统计修改网页请求头 -->
+    <script async src="<%- theme.libs.js.busuanzi %>"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <% } %>
+    
+    
+    <% if (theme.snow.enable) { %>
+    <script type="text/javascript" src="<%- theme.libs.js.snow %>"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <% } %>
+
+</body>
+
+</html>

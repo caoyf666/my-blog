@@ -1,0 +1,60 @@
+<%
+var musicList = site.data && site.data.musics ? site.data.musics : [];
+var music = musicList[0] || {};
+%>
+
+<% if (music.url) { %>
+<audio id="siteMusicAudio" preload="<%- theme.music.preload || 'none' %>" src="<%- url_for(music.url) %>"></audio>
+
+<script>
+(function () {
+    function onReady(callback) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', callback);
+        } else {
+            callback();
+        }
+    }
+
+    onReady(function () {
+        var audio = document.getElementById('siteMusicAudio');
+        var button = document.getElementById('siteMusicToggle');
+        if (!audio || !button) return;
+
+        var icon = button.querySelector('i');
+        var text = button.querySelector('.sr-only');
+
+        audio.volume = Number('<%- theme.music.volume %>') || 0.7;
+        audio.loop = '<%- theme.music.loop %>' === 'all' || '<%- theme.music.loop %>' === 'one';
+
+        function setPlaying(isPlaying) {
+            button.classList.toggle('is-playing', isPlaying);
+            button.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+            button.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
+            if (icon) icon.className = 'fa ' + (isPlaying ? 'fa-pause' : 'fa-play');
+            if (text) text.textContent = isPlaying ? 'Pause music' : 'Play music';
+        }
+
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (audio.paused) {
+                audio.play().then(function () {
+                    setPlaying(true);
+                }).catch(function () {
+                    setPlaying(false);
+                });
+            } else {
+                audio.pause();
+                setPlaying(false);
+            }
+        });
+
+        audio.addEventListener('play', function () { setPlaying(true); });
+        audio.addEventListener('pause', function () { setPlaying(false); });
+        audio.addEventListener('ended', function () { setPlaying(false); });
+    });
+})();
+</script>
+<% } %>

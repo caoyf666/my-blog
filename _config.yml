@@ -1,0 +1,158 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: cyf的博客
+subtitle: 记录学习与生活
+description: 记录学习、思考与成长。
+keywords: cyf
+author: cyf
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://localhost:4000
+root: /
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+
+
+# _config.yml 代码高亮 https://hexo.io/zh-cn/docs/syntax-highlight#preprocess
+syntax_highlighter: prismjs
+# highlight:
+#   auto_detect: false
+#   line_number: false
+#   line_threshold: 0
+#   tab_replace: ''
+#   exclude_languages:
+#     - example
+#   wrap: true
+#   hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  line_threshold: 0
+  tab_replace: ''
+
+lazyload:
+  enable: false  # 是否开启图片懒加载
+  onlypost: true  # 是否只对文章的图片做懒加载
+  loadingImg: # eg ./images/loading.gif
+  isSPA: false # optional. For performance considering, isSPA is added. If your theme is a SPA page, please set it as true
+  preloadRatio: 3 # optional, default is 1
+
+markdown_it_plus:
+  render:
+    breaks: true # md文档的换行符解析器换成<br>标签
+  # 加上下面的插件排版会错乱
+  # plugins:
+  #   - plugin:
+  #       name: markdown-it-katex
+  #       enable: false
+
+
+search:
+  path: search.xml
+  field: post
+
+# permalink: :year/:month/:day/:title/
+permalink: p/:abbrlink.html  # p 是自定义的前缀
+abbrlink:
+    alg: crc32   #算法： crc16(default) and crc32
+    rep: dec     #进制： dec(default) and hex
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+Plugins:
+- hexo-generator-sitemap
+
+sitemap:
+    path: sitemap.xml
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 12
+  order_by: -date
+  
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 12
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: matery
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type:
+  repository:
+  branch:
+# 个人服务器私有Git
+# - type: git
+#   repository: git@101.35.203.216:/home/git/blog.git
+#   branch: main
+# 百度url提交
+# - type: baidu_url_submitter
+
+# 百度 URL 提交配置
+# baidu_url_submit:
+#   count: 100
+#   host:
+#   token:
+#   path: baidu_urls.txt
+
+# 嵌入式表情支持 如 :star: 
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
